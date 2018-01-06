@@ -32,7 +32,7 @@ public:
 	int32 changed;
 	static const int32 name_chg = 1,
 		areas_chg = 2,
-		full_path_chg = 4;
+		full_path_chg = 0x100;
 			
 	team_id		team;
 	char args[64];	
