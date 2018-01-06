@@ -209,6 +209,7 @@ void MainWindow::MessageReceived(BMessage *message)
 			break;
 		case IE_MAINWINDOW_MAINMENU_COLUMNS_FULL_PATH:
 			SwitchColumn(Options::full_path_col, message->what);
+			break;
 
 		case IE_MAINWINDOW_MAINMENU_WINDOWS_SETTINGS___:
 		{
