@@ -79,7 +79,7 @@ void SettingsWindow::MessageReceived(BMessage *message)
 		}
 			break;
 		default:
-			inherited::MessageReceived(message);
+			BLooper::MessageReceived(message);
 			break;
 	}
 
