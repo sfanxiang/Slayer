@@ -26,6 +26,8 @@ TeamItem::TeamItem() : CLVEasyItem() { thread_items_list = 0; }
 	
 TeamItem::TeamItem(team_info *info) : CLVEasyItem(0, true, true)
 {
+	fprintf(stderr, "1\n");
+
 	team_icon = NULL;
 //	thread_items_list = new ThreadItemList;
 	thread_items_list = new Hashtable;
@@ -138,8 +140,10 @@ size_t TeamItem::CountMemory() {
 
 char *TeamItem::GetFullPath() {
 	image_info info;
-	if (get_image_info(team, &info) == B_OK)
+	if (get_image_info(team, &info) == B_OK) {
+		fprintf(stderr, "GetFullPath()=%s\n", info.name);
 		return strdup(info.name);
+	}
 
 	return NULL;
 }
