@@ -313,6 +313,7 @@ void MainWindow::UpdateTeams()
 			teamView->AddItem(team_item);
 
 			team_item->CPU_diff = 0;
+			team_item->full_path = NULL;
 			for (th_cookie = 0; get_next_thread_info(team_item->team, &th_cookie, &thinf) == B_OK;) {
 				thread_item = new ThreadItem(&thinf);
 				thread_item->refreshed = iteration;
@@ -443,10 +444,6 @@ bool postlistproc(CLVListItem *item, void *_wnd)
 				else if (ch & ThreadItem::state_chg) {
 					rect = item->ItemColumnFrame(TeamListView::state_ndx, wnd->teamView);
 					ch &= ~(ThreadItem::state_chg);
-				}
-				else if (ch & ThreadItem::full_path_chg) {
-					rect = item->ItemColumnFrame(TeamListView::full_path_ndx, wnd->teamView);
-					ch &= ~(ThreadItem::full_path_chg);
 				}
 				else ch = 0;
 

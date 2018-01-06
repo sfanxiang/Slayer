@@ -41,6 +41,7 @@ public:
 	size_t memory_usage;
 	bigtime_t CPU_diff;
 	float CPU;
+	char *full_path;
 	
 	BBitmap *team_icon;	
 	
@@ -52,6 +53,7 @@ public:
 	TeamItem(team_info *info);
 	int32 update(team_info *info);
 	size_t CountMemory(); // counts memory usage
+	char *GetFullPath();
 	virtual void Update(BView *owner, const BFont *font);
 	virtual void DrawItemColumn(BView *owner, BRect itemColumnRect, int32
 		columnIndex, bool complete = false);

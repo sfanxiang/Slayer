@@ -37,7 +37,12 @@ TeamItem::TeamItem(team_info *info) : CLVEasyItem(0, true, true)
 		memory_usage = CountMemory();
 	else
 		memory_usage = 0;
-	
+
+	if (slayer->options.shown_columns & Options::full_path_col)
+		full_path = GetFullPath();
+	else
+		full_path = NULL;
+
 	char str[21];
 	get_app_info(team, &team_icon, &name);
 	if (name == NULL) {
@@ -64,7 +69,7 @@ TeamItem::TeamItem(team_info *info) : CLVEasyItem(0, true, true)
 
 	SetColumnContent(TeamListView::CPU_ndx, "-", false);
 
-	// TODO: full_path
+	SetColumnContent(TeamListView::full_path_ndx, full_path, false);
 	
 	changed = 0;
 }
@@ -100,6 +105,23 @@ int32 TeamItem::update(team_info *info)
 			changed |= areas_chg;
 		}
 	}
+
+	if (slayer->options.shown_columns & Options::full_path_col) {
+		char *full_path_new = GetFullPath();
+		if (full_path_new) {
+			if (!full_path || full_pathstrcmp(full_path_new, full_path) != 0) {
+				if (full_path) free(full_path);
+
+				full_path = full_path_new;
+
+				SetColumnContent(TeamListView::full_path_ndx, full_path, false);
+				changed |= full_path_chg;
+			} else {
+				free(full_path_new);
+			}
+		}
+	}
+
 	return changed;
 }
 
@@ -112,6 +134,14 @@ size_t TeamItem::CountMemory() {
 		mem += info.ram_size;
 		
 	return mem;
+}
+
+char *TeamItem::GetFullPath() {
+	image_info info;
+	if (get_image_info(team, &info) == B_OK)
+		return strdup(info.name);
+
+	return NULL;
 }
 
 void TeamItem::Update(BView *owner, const BFont *font)

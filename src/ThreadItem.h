@@ -32,8 +32,7 @@ public:
 	static const int32 name_chg = 1,
 		priority_chg = 2,
 		sem_id_chg = 4,
-		state_chg = 0x20,
-		full_path_chg = 0x100;
+		state_chg = 0x20;
 		
 	char		name[B_OS_NAME_LENGTH];
 	thread_id	thread;
