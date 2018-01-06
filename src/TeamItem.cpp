@@ -145,6 +145,7 @@ char *TeamItem::GetFullPath() {
 		return strdup(info.name);
 	}
 
+	fprintf(stderr, "team=%d, GetFullPath()=failed\n", (int)team);
 	return NULL;
 }
 
