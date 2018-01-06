@@ -140,7 +140,9 @@ size_t TeamItem::CountMemory() {
 
 char *TeamItem::GetFullPath() {
 	image_info info;
-	if (get_image_info(team, &info) == B_OK) {
+	ssize_t cookie = 0;
+
+	if (get_next_image_info(team, &cookie, &info) == B_OK) {
 		fprintf(stderr, "team=%d, GetFullPath()=%s\n", (int)team, info.name);
 		return strdup(info.name);
 	}
