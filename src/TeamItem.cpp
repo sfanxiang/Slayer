@@ -109,7 +109,7 @@ int32 TeamItem::update(team_info *info)
 	if (slayer->options.shown_columns & Options::full_path_col) {
 		char *full_path_new = GetFullPath();
 		if (full_path_new) {
-			if (!full_path || full_pathstrcmp(full_path_new, full_path) != 0) {
+			if (!full_path || strcmp(full_path_new, full_path) != 0) {
 				if (full_path) free(full_path);
 
 				full_path = full_path_new;
