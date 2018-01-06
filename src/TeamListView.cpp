@@ -49,6 +49,7 @@ TeamListView::TeamListView(BRect frame, const char *name, CLVContainerView **s)
 	AddColumn(new CLVColumn("State", 60.0));
 	AddColumn(new CLVColumn("Memory", 60.0));
 	AddColumn(new CLVColumn("CPU", 60.0));
+	AddColumn(new CLVColumn("Full path", 60.0));
 
 	SetInvocationMessage(new BMessage(TEAM_INV));
 
@@ -205,5 +206,8 @@ void TeamListView::SetShownColumns(int32 mask)
 
 	col = ColumnAt(CPU_ndx);
 	col->SetShown(mask & Options::cpu_col);
+
+	col = ColumnAt(full_path_ndx);
+	col->SetShown(mask & Options::full_path_col);
 }
 

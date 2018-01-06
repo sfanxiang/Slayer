@@ -36,7 +36,8 @@ public:
 		priority_ndx = 4,
 		state_ndx = 5,
 		areas_ndx = 6,
-		CPU_ndx = 7;
+		CPU_ndx = 7,
+		full_path_ndx = 8;
 	
 	TeamListView(BRect frame, const char *name, CLVContainerView **s);
 	

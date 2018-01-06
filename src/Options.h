@@ -40,7 +40,8 @@ struct Options {
 		state_col = 0x4,
 		memory_col = 0x8,
 		cpu_col = 0x10,
-		name_col = 0x20
+		name_col = 0x20,
+		full_path_col = 0x40
 	};
 	int32 shown_columns;	
 		

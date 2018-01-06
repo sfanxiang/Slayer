@@ -55,6 +55,8 @@ TABLE OF CONTENTS
 		A graphical bar that shows how much CPU this thread/team is
 		using. Of course only threads use CPU, but for every team Slayer
 		counts together the CPU usages of it's threads.
+	Full path
+		The full pathname of the file whence sprang the team / thread.
 
 3.2 TEAM/THREAD CONTROL
 	Under the team list view is a Process Control and Process Priority box with

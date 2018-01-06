@@ -207,6 +207,8 @@ void MainWindow::MessageReceived(BMessage *message)
 		case IE_MAINWINDOW_MAINMENU_COLUMNS_CPU:
 			SwitchColumn(Options::cpu_col, message->what);
 			break;
+		case IE_MAINWINDOW_MAINMENU_COLUMNS_FULL_PATH:
+			SwitchColumn(Options::full_path_col, message->what);
 
 		case IE_MAINWINDOW_MAINMENU_WINDOWS_SETTINGS___:
 		{
@@ -402,6 +404,10 @@ bool postlistproc(CLVListItem *item, void *_wnd)
 					rect = item->ItemColumnFrame(TeamListView::areas_ndx, wnd->teamView);
 					ch &= ~(TeamItem::areas_chg);
 				}
+				else if (ch & TeamItem::full_path_chg) {
+					rect = item->ItemColumnFrame(TeamListView::full_path_ndx, wnd->teamView);
+					ch &= ~(TeamItem::full_path_chg);
+				}
 				else ch = 0;
 				if (rect.right && rect.bottom) wnd->teamView->Invalidate(rect);
 			}
@@ -436,6 +442,10 @@ bool postlistproc(CLVListItem *item, void *_wnd)
 				else if (ch & ThreadItem::state_chg) {
 					rect = item->ItemColumnFrame(TeamListView::state_ndx, wnd->teamView);
 					ch &= ~(ThreadItem::state_chg);
+				}
+				else if (ch & ThreadItem::full_path_chg) {
+					rect = item->ItemColumnFrame(TeamListView::full_path_ndx, wnd->teamView);
+					ch &= ~(ThreadItem::full_path_chg);
 				}
 				else ch = 0;
 
@@ -678,6 +688,9 @@ void MainWindow::SetColumn(int32 col_mask)
 
 	item = menu->FindItem(IE_MAINWINDOW_MAINMENU_COLUMNS_CPU);
 	item->SetMarked(col_mask & Options::cpu_col ? true : false);
+
+	item = menu->FindItem(IE_MAINWINDOW_MAINMENU_COLUMNS_FULL_PATH);
+	item->SetMarked(col_mask & Options::full_path_col ? true : false);
 
 	teamView->SetShownColumns(slayer->options.shown_columns);
 }

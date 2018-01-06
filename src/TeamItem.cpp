@@ -63,6 +63,8 @@ TeamItem::TeamItem(team_info *info) : CLVEasyItem(0, true, true)
 	SetColumnContent(TeamListView::areas_ndx, str, false);
 
 	SetColumnContent(TeamListView::CPU_ndx, "-", false);
+
+	// TODO: full_path
 	
 	changed = 0;
 }
