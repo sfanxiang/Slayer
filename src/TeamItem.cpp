@@ -141,7 +141,7 @@ size_t TeamItem::CountMemory() {
 char *TeamItem::GetFullPath() {
 	image_info info;
 	if (get_image_info(team, &info) == B_OK) {
-		fprintf(stderr, "GetFullPath()=%s\n", info.name);
+		fprintf(stderr, "team=%d, GetFullPath()=%s\n", (int)team, info.name);
 		return strdup(info.name);
 	}
 
