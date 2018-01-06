@@ -31,7 +31,8 @@ public:
 	int32 refreshed;
 	int32 changed;
 	static const int32 name_chg = 1,
-		areas_chg = 2;
+		areas_chg = 2,
+		full_path_chg = 4;
 			
 	team_id		team;
 	char args[64];	

@@ -62,6 +62,8 @@ ThreadItem::ThreadItem(thread_info *info) : CLVEasyItem(1)
 
 	SetColumnContent(TeamListView::CPU_ndx, "-", false);
 
+	// TODO: full path
+
 	changed = 0;
 }
 
