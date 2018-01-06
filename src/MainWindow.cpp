@@ -411,6 +411,7 @@ bool postlistproc(CLVListItem *item, void *_wnd)
 					ch &= ~(TeamItem::full_path_chg);
 				}
 				else ch = 0;
+				fprintf("%d %d %d %d\n", rect.top, rect.left, rect.bottom, rect.right);
 				if (rect.right && rect.bottom) wnd->teamView->Invalidate(rect);
 			}
 			((TeamItem *)item)->changed = 0;

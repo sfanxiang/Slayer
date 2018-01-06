@@ -26,8 +26,6 @@ TeamItem::TeamItem() : CLVEasyItem() { thread_items_list = 0; }
 	
 TeamItem::TeamItem(team_info *info) : CLVEasyItem(0, true, true)
 {
-	fprintf(stderr, "1\n");
-
 	team_icon = NULL;
 //	thread_items_list = new ThreadItemList;
 	thread_items_list = new Hashtable;
@@ -117,6 +115,7 @@ int32 TeamItem::update(team_info *info)
 				full_path = full_path_new;
 
 				SetColumnContent(TeamListView::full_path_ndx, full_path, false);
+				fprintf(stderr, "team=%d, full_path=%s\n", team, full_path);
 				changed |= full_path_chg;
 			} else {
 				free(full_path_new);
@@ -143,11 +142,9 @@ char *TeamItem::GetFullPath() {
 	int32 cookie = 0;
 
 	if (get_next_image_info(team, &cookie, &info) == B_OK) {
-		fprintf(stderr, "team=%d, GetFullPath()=%s\n", (int)team, info.name);
 		return strdup(info.name);
 	}
 
-	fprintf(stderr, "team=%d, GetFullPath()=failed\n", (int)team);
 	return NULL;
 }
 
